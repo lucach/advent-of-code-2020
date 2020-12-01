@@ -2,9 +2,9 @@ import Data.List
 
 main = do
   content <- readFile "input.txt"
-  let numbers = map read (lines content) :: [Int]
-  let sums = [[n1,n2] | (n1:rest) <- tails numbers, n2 <- rest]
-  let maybe_ns = find (\ns -> sum ns == 2020) sums
-  putStrLn (case maybe_ns of
+  let ns = map read (lines content) :: [Int]
+  let pairs = [[n1,n2] | (n1:rest) <- tails ns, n2 <- rest]
+  let maybe_pair = find (\p -> sum p == 2020) pairs
+  putStrLn (case maybe_pair of
     Nothing -> "Not found"
-    Just ns -> show (product ns))
+    Just pair -> show (product pair))
